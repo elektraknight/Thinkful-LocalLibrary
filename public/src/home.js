@@ -30,14 +30,15 @@ function getMostCommonGenres(books) {
     return tally;
   }, {})
 
-  for(prop in accList) {
-    const num = accList[prop];
-    const consise = {"name": prop, "count": num };
+  for(genre2 in accList) {
+    const num = accList[genre2];
+    const consise = {"name": genre2, "count": num };
     result.push(consise);
   };
   return result.sort((one, two) => one.count < two.count ? 1 : -1).splice(0, 5);
 
 }
+//pass
 //======================================================
 function getMostPopularBooks(books) {
     let result = [];
@@ -50,6 +51,7 @@ function getMostPopularBooks(books) {
   });
 return result.sort((one, two) => one.count < two.count ? 1 : -1).splice(0, 5);
 }
+//pass
 //======================================================
 function getMostPopularAuthors(books, authors) {
     let result = [];
@@ -69,6 +71,7 @@ function getMostPopularAuthors(books, authors) {
     });
     return result.sort((one, two) => one.count < two.count ? 1 : -1).splice(0, 5);
 }
+//pass
 //==============================================
 module.exports = {
   getTotalBooksCount,
