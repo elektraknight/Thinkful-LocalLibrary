@@ -1,17 +1,19 @@
+function sortArray(array){
+  return array.sort((one, two) => one.count < two.count ? 1 : -1).splice(0, 5);
+}
+//===== helper function above ^ ==========
 function getTotalBooksCount(books) {
     let totalBooks = books.length;
     return totalBooks;
 }
-//pass
-//======================================================
+//=========================================
 function getTotalAccountsCount(accounts) {
     let totalAccounts = accounts.length;
     return totalAccounts;
 }
-//pass
-//======================================================
+//===================================================
 function getBooksBorrowedCount(books) {
-    let borrowedArray = [];
+        let borrowedArray = [];
       for (let i = 0; i < books.length; i++){
         if (books[i].borrows[0].returned === false){
             borrowedArray.push(books[i]);
@@ -20,8 +22,7 @@ function getBooksBorrowedCount(books) {
   let allBorrowed = borrowedArray.length;
   return allBorrowed;
 }
-//pass
-//======================================================
+//==================================================
 function getMostCommonGenres(books) {
     let result = [];
   const genreList = books.map((book) => book.genre);
@@ -30,16 +31,15 @@ function getMostCommonGenres(books) {
     return tally;
   }, {})
 
-  for(genre2 in accList) {
-    const num = accList[genre2];
-    const consise = {"name": genre2, "count": num };
+  for(gen in accList) {
+    const num = accList[gen];
+    const consise = {"name": gen, "count": num };
     result.push(consise);
   };
-  return result.sort((one, two) => one.count < two.count ? 1 : -1).splice(0, 5);
-
+    //use helper function to sort & cut the list
+  return sortArray(result);
 }
-//pass
-//======================================================
+//==================================================
 function getMostPopularBooks(books) {
     let result = [];
   
@@ -49,10 +49,10 @@ function getMostPopularBooks(books) {
     const consise = {"name": title, "count": num};
     result.push(consise);
   });
-return result.sort((one, two) => one.count < two.count ? 1 : -1).splice(0, 5);
+    //use helper function to sort & cut the list
+return sortArray(result);
 }
-//pass
-//======================================================
+//==================================================
 function getMostPopularAuthors(books, authors) {
     let result = [];
   
@@ -69,10 +69,10 @@ function getMostPopularAuthors(books, authors) {
           }
         });
     });
-    return result.sort((one, two) => one.count < two.count ? 1 : -1).splice(0, 5);
+    //use helper function to sort & cut the list
+    return sortArray(result);
 }
-//pass
-//==============================================
+//==========================================
 module.exports = {
   getTotalBooksCount,
   getTotalAccountsCount,
@@ -81,3 +81,4 @@ module.exports = {
   getMostPopularBooks,
   getMostPopularAuthors,
 };
+
